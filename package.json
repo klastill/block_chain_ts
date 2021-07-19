@@ -1,0 +1,9 @@
+{
+  "name": "type_chain",
+  "version": "1.0.0",
+  "description": "block chain",
+  "main": "index.js",
+  "repository": "https://github.com/klastill/block_chain_ts.git",
+  "author": "klastill",
+  "license": "MIT"
+}
