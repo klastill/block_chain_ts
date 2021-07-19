@@ -39,9 +39,9 @@ class Block {
 const genesisBlock: Block = new Block(
 	0,
 	"000000000000",
-	"",
+	"asdg2asdfsd",
 	"initial",
-	20210719
+	202107
 );
 
 let blockchain: Block[] = [genesisBlock];
@@ -67,19 +67,26 @@ const createNewBlock = (data: string): Block => {
 		data,
 		newTimestamp
 	);
+  
+  addBlock(newBlock);
+  
   return newBlock;
 };
 
 const getHashforBlock =(aBlock: Block): string => Block.calcBlockHash(aBlock.index, aBlock.prevHash, aBlock.timestamp, aBlock.data);
 
 const isBlockValid = (candidBlock: Block, prevBlock: Block): boolean => {
-  if (Block.validStructure(candidBlock)) {
+  if (!Block.validStructure(candidBlock)) {
+    console.log("nvs");
     return false;
   } else if (prevBlock.index + 1 !== candidBlock.index) {
+    console.log("err index");
     return false;
   } else if (prevBlock.hash !== candidBlock.prevHash) {
+    console.log("err hash");
     return false;
   } else if (getHashforBlock(candidBlock) !== candidBlock.hash) {
+    console.log("err getHash");
     return false;
   } else {
     return true;
@@ -91,5 +98,10 @@ const addBlock = (candidBlock: Block): void => {
     blockchain.push(candidBlock);
   }
 }
+createNewBlock("second");
+createNewBlock("third");
+createNewBlock("fourth");
+
+console.log(getBlockchain());
 
 export {};
