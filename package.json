@@ -1,9 +1,20 @@
 {
   "name": "type_chain",
   "version": "1.0.0",
-  "description": "block chain",
+  "description": "block_chain",
   "main": "index.js",
   "repository": "https://github.com/klastill/block_chain_ts.git",
   "author": "klastill",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "tsc-watch --onSuccess \"node dist/index.js\" "
+  },
+  "devDependencies": {
+    "@types/node": "^16.3.3",
+    "ts-node": "^10.1.0",
+    "tsc-watch": "^4.4.0"
+  },
+  "dependencies": {
+    "typescript": "^4.3.5"
+  }
 }
