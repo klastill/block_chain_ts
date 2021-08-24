@@ -39,7 +39,7 @@ class Block {
 const genesisBlock: Block = new Block(
 	0,
 	"000000000000",
-	"asdg2asdfsd",
+	"hash",
 	"initial",
 	202107
 );
@@ -73,20 +73,16 @@ const createNewBlock = (data: string): Block => {
   return newBlock;
 };
 
-const getHashforBlock =(aBlock: Block): string => Block.calcBlockHash(aBlock.index, aBlock.prevHash, aBlock.timestamp, aBlock.data);
+const getHashForBlock = (aBlock: Block): string => Block.calcBlockHash(aBlock.index, aBlock.prevHash, aBlock.timestamp, aBlock.data);
 
 const isBlockValid = (candidBlock: Block, prevBlock: Block): boolean => {
   if (!Block.validStructure(candidBlock)) {
-    console.log("nvs");
     return false;
   } else if (prevBlock.index + 1 !== candidBlock.index) {
-    console.log("err index");
     return false;
   } else if (prevBlock.hash !== candidBlock.prevHash) {
-    console.log("err hash");
     return false;
-  } else if (getHashforBlock(candidBlock) !== candidBlock.hash) {
-    console.log("err getHash");
+  } else if (getHashForBlock(candidBlock) !== candidBlock.hash) {
     return false;
   } else {
     return true;
